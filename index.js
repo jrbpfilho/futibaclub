@@ -22,7 +22,17 @@ const init = async() => {
         user: 'root',
         password: 'van23ruy',
         database: 'futibaclub'
-})
+    })
+
+    app.use((req, res, next) => {
+        if(req.session.user) {
+            res.locals.user = req.session.user
+        } else {
+            res.locals.user = false
+        }
+        next()
+    })
+
     app.use(account(connection))
 
     app.listen(3000, err => {
