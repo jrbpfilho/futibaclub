@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const account = require('./account')
 const admin = require('./admin')
+const groups = require('./groups')
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -36,6 +37,7 @@ const init = async() => {
 
     app.use(account(connection))
     app.use('/admin', admin(connection))
+    app.use('/groups', groups(connection))
 
     app.listen(3000, err => {
         console.log('Futiba Club server is running...')
