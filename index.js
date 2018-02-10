@@ -47,9 +47,9 @@ app.set('view engine', 'ejs')
     app.use('/admin', admin(connection))
     app.use('/groups', groups(connection))
 
-   /*  app.listen(3000, err => {
+    app.listen(process.env.PORT || 5000, err => {
         console.log('Futiba Club server is running...')
-    }) */
+    })
 
 }
 init()
